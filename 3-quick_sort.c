@@ -1,6 +1,6 @@
 #include "sort.h"
 /**
- * selection_sort - Entry point
+ * quick_sort - Entry point
  *
  * @array: test
  * @size: test
@@ -11,24 +11,41 @@ void quick_sort(int *array, size_t size)
 	quick_sort_helper(array, 0, size - 1, size);
 }
 
+/**
+ * quick_sort_helper - Entry point
+ *
+ * @array: test
+ * @lo: test
+ * @hi: test
+ * @size: test
+ * Return: Always 0
+ */
 void quick_sort_helper(int *array, int lo, int hi, size_t size)
 {
-	
 	if (lo < hi)
 	{
-		
 		int p = partition(array, lo, hi, size);
+
 		quick_sort_helper(array, lo, p - 1, size);
 		quick_sort_helper(array, p + 1, hi, size);
-		
 	}
 }
 
+/**
+ * partition - Entry point
+ *
+ * @array: test
+ * @size: test
+ * @lo: test
+ * @hi: test
+ * Return: Always 0
+ */
 int partition(int *array, int lo, int hi, size_t size)
 {
 	int pivot = array[hi];
 	int i = lo - 1;
 	int j, temp;
+
 	for (j = lo; j <= hi - 1; j++)
 	{
 		if (array[j] <= pivot)
@@ -41,7 +58,6 @@ int partition(int *array, int lo, int hi, size_t size)
 			{
 				print_array(array, size);
 			}
-			
 		}
 	}
 	temp = array[i + 1];
