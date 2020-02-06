@@ -17,15 +17,14 @@ void quick_sort_helper(int *array, int lo, int hi, size_t size)
 	if (lo < hi)
 	{
 		
-		int p = partition(array, lo, hi);
-		print_array(array, size);
+		int p = partition(array, lo, hi, size);
 		quick_sort_helper(array, lo, p - 1, size);
 		quick_sort_helper(array, p + 1, hi, size);
 		
 	}
 }
 
-int partition(int *array, int lo, int hi)
+int partition(int *array, int lo, int hi, size_t size)
 {
 	int pivot = array[hi];
 	int i = lo - 1;
@@ -38,10 +37,19 @@ int partition(int *array, int lo, int hi)
 			temp = array[i];
 			array[i] = array[j];
 			array[j] = temp;
+			if (i != j)
+			{
+				print_array(array, size);
+			}
+			
 		}
 	}
 	temp = array[i + 1];
 	array[i + 1] = array[hi];
 	array[hi] = temp;
+	if (i + 1 != hi)
+	{
+		print_array(array, size);
+	}
 	return (i + 1);
 }
